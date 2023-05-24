@@ -52,27 +52,40 @@ const PositionList = () => {
         }
     }, [onSendData])
 
-    const onAdd = (position) => {
-        const alreadyAdded = addedItems.find(item => item.id === position.id);
-        let newItems = [];
-
-        if(alreadyAdded) {
-            newItems = addedItems.filter(item => item.id !== position.id);
+    const onAdd = (food) => {
+        const exist = addedItems.find((x) => x.id === food.id);
+        if (exist) {
+            setAddedItems(
+                addedItems.map((x) =>
+                    x.id === food.id ? { ...exist, quantity: exist.quantity + 1 } : x
+                )
+            );
         } else {
-            newItems = [...addedItems, position];
+            setAddedItems([...addedItems, { ...food, quantity: 1 }]);
         }
 
-        setAddedItems(newItems)
-
-        if(newItems.length === 0) {
+        if(addedItems.length === 0) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Купить ${getTotalPrice(newItems)}`
+                text: `Купить ${getTotalPrice(addedItems)}`
             })
         }
-    }
+    };
+
+    const onRemove = (food) => {
+        const exist = addedItems.find((x) => x.id === food.id);
+        if (exist.quantity === 1) {
+            setAddedItems(addedItems.filter((x) => x.id !== food.id));
+        } else {
+            setAddedItems(
+                addedItems.map((x) =>
+                    x.id === food.id ? { ...exist, quantity: exist.quantity - 1 } : x
+                )
+            );
+        }
+    };
 
     return (
         <div className={'list'}>
@@ -80,6 +93,7 @@ const PositionList = () => {
                 <PositionItem
                     position={item}
                     onAdd={onAdd}
+                    onRemove={onRemove}
                     className={'item'}
                 />
             ))}

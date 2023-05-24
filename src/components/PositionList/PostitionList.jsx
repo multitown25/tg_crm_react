@@ -20,49 +20,57 @@ const position = [
     {id: '6', title: 'Чай чер/зел', price: 80, img: tea}
 ]
 
-const getTotalPrice = (items = []) => items.reduce((a, c) => a + c.price * c.quantity, 0, 0);
+const getTotalPrice = (items = []) => {
+    return items.reduce((acc, item) => {
+        return acc += item.price
+    }, 0)
+}
 
 const PositionList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
-    const onSendData = useCallback(() => {
-        const data = {
-            products: addedItems,
-            totalPrice: getTotalPrice(addedItems),
-            queryId,
-        }
-        fetch('http://85.119.146.179:8000/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [addedItems])
-
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
-        return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-        }
-    }, [onSendData])
+    // const onSendData = useCallback(() => {
+    //     const data = {
+    //         products: addedItems,
+    //         totalPrice: getTotalPrice(addedItems),
+    //         queryId,
+    //     }
+    //     fetch('http://85.119.146.179:8000/web-data', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    // }, [addedItems])
+    //
+    // useEffect(() => {
+    //     tg.onEvent('mainButtonClicked', onSendData)
+    //     return () => {
+    //         tg.offEvent('mainButtonClicked', onSendData)
+    //     }
+    // }, [onSendData])
 
     const onAdd = (food) => {
         const exist = addedItems.find((x) => x.id === food.id);
         if (exist) {
+            console.log('exist')
             setAddedItems(
                 addedItems.map((x) =>
                     x.id === food.id ? { ...exist, quantity: exist.quantity + 1 } : x
                 )
             );
         } else {
+            console.log('no exist')
             setAddedItems([...addedItems, { ...food, quantity: 1 }]);
         }
 
-        if(addedItems.length === 1) {
-            tg.MainButton.hide();
+        console.log(addedItems.length)
+        if(addedItems.length === 0) {
+            tg.MainButton.  hide();
         } else {
+            console.log(getTotalPrice(addedItems));
             tg.MainButton.show();
             tg.MainButton.setParams({
                 text: `Купить ${getTotalPrice(addedItems)}`

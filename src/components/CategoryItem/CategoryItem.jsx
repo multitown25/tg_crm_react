@@ -10,15 +10,17 @@ const CategoryItem = ({category, className, onAdd}) => {
 
     return (
         <div className={'product ' + className}>
-            <div className={'img'}/>
+            <div className={'img'}>
+                <img src={category.img}/>
+            </div>
             <div className={'title'}>{category.title}</div>
-            <div className={'description'}>{category.description}</div>
+            {/*<div className={'description'}>{category.description}</div>*/}
             {/*<div className={'price'}>*/}
             {/*    <span>Стоимость: <b>{category.price}</b></span>*/}
             {/*</div>*/}
-            <Button className={'add-btn'} onClick={onAddHandler}>
-                Добавить в корзину
-            </Button>
+            {/*<Button className={'add-btn'} onClick={onAddHandler}>*/}
+            {/*    Добавить в корзину*/}
+            {/*</Button>*/}
         </div>
     );
 };

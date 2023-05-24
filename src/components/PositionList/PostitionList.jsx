@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import './CategoryList.css';
-import CategoryItem from "../CategoryItem/CategoryItem";
+import './PositionList.css';
+import PositionItem from "../PositionItem/PostitionItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
@@ -10,12 +10,14 @@ import soups from '../../uploads/27092022-080410-211-soup.png';
 import pasta from '../../uploads/27092022-080640-894-pasta.jpg';
 import breakfast from '../../uploads/27092022-080913-546-breakfest.jpg';
 
-const category = [
-    {id: '1', title: 'Напитки', price: 100, img: drinks},
-    {id: '2', title: 'Салаты', price: 150, img: salads},
-    {id: '3', title: 'Супы', price: 200, img: soups},
-    {id: '4', title: 'Паста', price: 250, img: pasta},
-    {id: '5', title: 'Завтраки', price: 50, img: breakfast}
+
+const position = [
+    {id: '1', title: 'Эспрессо', price: 100,},
+    {id: '2', title: 'Американо', price: 150},
+    {id: '3', title: 'Капучино', price: 200},
+    {id: '4', title: 'Редбул', price: 250},
+    {id: '5', title: 'Вода', price: 50},
+    {id: '6', title: 'Чай чер/зел', price: 80}
 ]
 
 const getTotalPrice = (items = []) => {
@@ -24,7 +26,7 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
-const CategoryList = () => {
+const PositionList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
@@ -50,14 +52,14 @@ const CategoryList = () => {
         }
     }, [onSendData])
 
-    const onAdd = (category) => {
-        const alreadyAdded = addedItems.find(item => item.id === category.id);
+    const onAdd = (position) => {
+        const alreadyAdded = addedItems.find(item => item.id === position.id);
         let newItems = [];
 
         if(alreadyAdded) {
-            newItems = addedItems.filter(item => item.id !== category.id);
+            newItems = addedItems.filter(item => item.id !== position.id);
         } else {
-            newItems = [...addedItems, category];
+            newItems = [...addedItems, position];
         }
 
         setAddedItems(newItems)
@@ -74,9 +76,9 @@ const CategoryList = () => {
 
     return (
         <div className={'list'}>
-            {category.map(item => (
-                <CategoryItem
-                    category={item}
+            {position.map(item => (
+                <PositionItem
+                    position={item}
                     onAdd={onAdd}
                     className={'item'}
                 />
@@ -85,4 +87,4 @@ const CategoryList = () => {
     );
 };
 
-export default CategoryList;
+export default PositionList;

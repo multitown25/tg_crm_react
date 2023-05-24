@@ -11,8 +11,9 @@ const CategoryItem = ({category, className, onAdd}) => {
     return (
         <div className={'product ' + className}>
             <div className={'image__container'}>
-                <img src={category.img} alt={category.title}/>
+                <img src={category.img}/>
             </div>
+            <h4 className="card__title">{category.title}</h4>
             {/*<div className={'title'}>{category.title}</div>*/}
             {/*<div className={'description'}>{category.description}</div>*/}
             {/*<div className={'price'}>*/}

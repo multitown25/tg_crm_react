@@ -20,15 +20,11 @@ const position = [
     {id: '6', title: 'Чай чер/зел', price: 80, img: tea}
 ]
 
-const getTotalPrice = (items = []) => {
-    return items.reduce((acc, item) => {
-        return acc += item.price
-    }, 0)
-}
-
 const PositionList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
+
+    const totalPrice = addedItems.reduce((a, c) => a + c.price * c.quantity, 0);
 
     const onSendData = useCallback(() => {
         const data = {
@@ -64,12 +60,12 @@ const PositionList = () => {
             setAddedItems([...addedItems, { ...food, quantity: 1 }]);
         }
 
-        if(addedItems.length === 0) {
+        if(addedItems.length === 1) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Купить ${getTotalPrice(addedItems)}`
+                text: `Купить ${totalPrice(addedItems)}`
             })
         }
     };

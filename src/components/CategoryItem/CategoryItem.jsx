@@ -8,10 +8,14 @@ const CategoryItem = ({category, className, onAdd}) => {
         onAdd(category);
     }
 
+    const imageClick = () => {
+        window.location.assign(`http://localhost:3000/position/${category.id}`);
+    }
+
     return (
         <div className={'product ' + className}>
             <div className={'image__container'}>
-                <img src={category.img}/>
+                <img src={category.img} onClick={imageClick}/>
             </div>
             <h4 className="card__title">{category.title}</h4>
             {/*<div className={'title'}>{category.title}</div>*/}

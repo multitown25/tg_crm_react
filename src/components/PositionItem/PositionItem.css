@@ -6,14 +6,30 @@
     width: 170px;
 }
 
+.card__title {
+    font-weight: 400;
+    text-align: center;
+    margin-top: 5px;
+}
 
-.img {
-    width: 100%;
-    background: lightgray;
+.image__container {
+    width: 100px;
     height: 100px;
     margin: 0 auto;
-    background: var(--tg-theme-button-color);
 }
+
+.image__container img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/*.img {*/
+/*    width: 100%;*/
+/*    background: lightgray;*/
+/*    height: 100px;*/
+/*    margin: 0 auto;*/
+/*    background: var(--tg-theme-button-color);*/
+/*}*/
 
 .description {
     font-size: 0.8em;

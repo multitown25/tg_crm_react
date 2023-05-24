@@ -4,20 +4,20 @@ import PositionItem from "../PositionItem/PostitionItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
-import drinks from '../../uploads/27092022-075905-961-cofee.jpg';
-import salads from '../../uploads/27092022-080246-373-salad.jpg';
-import soups from '../../uploads/27092022-080410-211-soup.png';
-import pasta from '../../uploads/27092022-080640-894-pasta.jpg';
-import breakfast from '../../uploads/27092022-080913-546-breakfest.jpg';
-
+import espresso from '../../uploads/espresso_9575-1.jpg';
+import americano from '../../uploads/amerikano1062.jpg';
+import capuchino from '../../uploads/capuchino49e2626b85f71806c91e73aec3671e41.jpeg';
+import redbull from '../../uploads/redbul6337590357.jpg';
+import water from '../../uploads/waterdc284b71c7a6783c5617755262f24dfe.jpg';
+import tea from '../../uploads/tea1200-ed4_wide.jpg';
 
 const position = [
-    {id: '1', title: 'Эспрессо', price: 100,},
-    {id: '2', title: 'Американо', price: 150},
-    {id: '3', title: 'Капучино', price: 200},
-    {id: '4', title: 'Редбул', price: 250},
-    {id: '5', title: 'Вода', price: 50},
-    {id: '6', title: 'Чай чер/зел', price: 80}
+    {id: '1', title: 'Эспрессо', price: 100, img: espresso},
+    {id: '2', title: 'Американо', price: 150, img: americano},
+    {id: '3', title: 'Капучино', price: 200, img: capuchino},
+    {id: '4', title: 'Редбул', price: 250, img: redbull},
+    {id: '5', title: 'Вода', price: 50, img: water},
+    {id: '6', title: 'Чай чер/зел', price: 80, img: tea}
 ]
 
 const getTotalPrice = (items = []) => {

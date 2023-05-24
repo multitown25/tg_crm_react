@@ -4,6 +4,7 @@ import {useTelegram} from "./hooks/useTelegram";
 // import Header from "./components/Header/Header";
 import {Route, Routes} from 'react-router-dom'
 import CategoryList from "./components/CategoryList/CategoryList";
+import PositionList from "./components/PositionList/PostitionList";
 // import Form from "./components/Form/Form";
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         <div className="App">
             <Routes>
                 <Route index element={<CategoryList />}/>
-                {/*<Route path={'form'} element={<Form />}/>*/}
+                <Route path={'position/:id'} element={<PositionList />}/>
             </Routes>
         </div>
     );

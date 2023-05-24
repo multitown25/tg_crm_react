@@ -10,8 +10,10 @@ const PositionItem = ({position, className, onAdd}) => {
 
     return (
         <div className={'product ' + className}>
-            <div className={'img'}/>
-            <div className={'title'}>{position.title}</div>
+            <div className={'image__container'}>
+                <img src={position.img}/>
+            </div>
+            <h4 className="card__title">{position.title}</h4>
             {/*<div className={'description'}>{category.description}</div>*/}
             {/*<div className={'price'}>*/}
             {/*    <span>Стоимость: <b>{category.price}</b></span>*/}

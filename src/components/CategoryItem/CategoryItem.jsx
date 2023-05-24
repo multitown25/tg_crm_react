@@ -10,7 +10,7 @@ const CategoryItem = ({category, className, onAdd}) => {
 
     return (
         <div className={'product ' + className}>
-            <div className={'img'}>
+            <div className={'image__container'}>
                 <img src={category.img}/>
             </div>
             <div className={'title'}>{category.title}</div>

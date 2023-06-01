@@ -10,6 +10,7 @@ import capuchino from '../../uploads/capuchino49e2626b85f71806c91e73aec3671e41.j
 import redbull from '../../uploads/redbul6337590357.jpg';
 import water from '../../uploads/waterdc284b71c7a6783c5617755262f24dfe.jpg';
 import tea from '../../uploads/tea1200-ed4_wide.jpg';
+import Cart from "../Cart/Cart";
 
 const position = [
     {id: '1', title: 'Эспрессо', price: 100, img: espresso},
@@ -84,27 +85,15 @@ const PositionList = () => {
     // }, [onSendData])
 
     const onAdd = (food) => {
-        const alreadyAdded = addedItems.find(item => item.id === food.id);
-        let newItems = [];
-
-        if(alreadyAdded) {
-            console.log('exist')
-            newItems = addedItems.filter(item => item.id !== food.id);
+        const exist = addedItems.find((x) => x.id === food.id);
+        if (exist) {
+            setAddedItems(
+                addedItems.map((x) =>
+                    x.id === food.id ? { ...exist, quantity: exist.quantity + 1 } : x
+                )
+            );
         } else {
-            console.log('no exist')
-            newItems = [...addedItems, food];
-        }
-
-        setAddedItems(newItems)
-
-        console.log(addedItems.length)
-        if(newItems.length === 0) {
-            tg.MainButton.hide();
-        } else {
-            tg.MainButton.show();
-            tg.MainButton.setParams({
-                text: `Купить ${getTotalPrice(newItems)}`
-            })
+            setAddedItems([...addedItems, { ...food, quantity: 1 }]);
         }
     };
 
@@ -121,17 +110,25 @@ const PositionList = () => {
         }
     };
 
+    const onCheckout = () => {
+        tg.MainButton.text = "Pay :)";
+        tg.MainButton.show();
+    };
+
     return (
-        <div className={'list'}>
-            {position.map(item => (
-                <PositionItem
-                    position={item}
-                    onAdd={onAdd}
-                    onRemove={onRemove}
-                    className={'item'}
-                />
-            ))}
-        </div>
+        <>
+            <Cart cartItems={addedItems} onCheckout={onCheckout}/>
+            <div className={'list'}>
+                {position.map(item => (
+                    <PositionItem
+                        position={item}
+                        onAdd={onAdd}
+                        onRemove={onRemove}
+                        className={'item'}
+                    />
+                ))}
+            </div>
+        </>
     );
 };
 

@@ -117,7 +117,7 @@ const PositionList = () => {
 
     return (
         <>
-            <Cart cartItems={addedItems} onCheckout={onCheckout}/>
+            <Cart addedItems={addedItems} onCheckout={onCheckout}/>
             <div className={'list'}>
                 {position.map(item => (
                     <PositionItem

@@ -111,7 +111,7 @@ const PositionList = () => {
     };
 
     const onCheckout = () => {
-        tg.MainButton.text = "Pay :)";
+        tg.MainButton.text = "ппп";
         tg.MainButton.show();
     };
 

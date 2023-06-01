@@ -6,10 +6,10 @@ function Cart({ addedItems, onCheckout }) {
 
     return (
         <div className="cart__container">
-            {addedItems.length === 0 ? "No items in cart" : ""}
+            {addedItems.length === 0 ? "В заказе нет позиций" : ""}
             <br /> <span className="">Total Price: ${totalPrice.toFixed(2)}</span>
             <Button
-                title={`${addedItems.length === 0 ? "Order !" : "Checkout"} `}
+                title={`${addedItems.length === 0 ? "Заказать" : "Оплатить"} `}
                 type={"checkout"}
                 disable={addedItems.length === 0 ? true : false}
                 onClick={onCheckout}

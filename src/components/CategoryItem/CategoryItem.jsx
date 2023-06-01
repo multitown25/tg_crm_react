@@ -9,7 +9,7 @@ const CategoryItem = ({category, className, onAdd}) => {
     }
 
     const imageClick = () => {
-        window.location.assign(`http://localhost:3000/position/${category.id}`);
+        window.location.assign(`https://restaurant-react-system.netlify.app/position/${category.id}`);
     }
 
     return (

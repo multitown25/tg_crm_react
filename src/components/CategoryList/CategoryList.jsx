@@ -73,7 +73,7 @@ const CategoryList = () => {
     // }
 
     const imageClick = () => {
-        window.location.assign('http://localhost:3000/position');
+        window.location.assign('https://restaurant-react-system.netlify.app/position');
     }
 
     return (

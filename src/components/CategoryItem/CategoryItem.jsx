@@ -29,7 +29,7 @@ const CategoryItem = ({category, className, onAdd}) => {
         const categoriesFromDB = await getCategories()
         console.log(categoriesFromDB);
 
-        window.location.assign(`https://restaurant-react-system.netlify.app/position/${category.id}`);
+        //window.location.assign(`https://restaurant-react-system.netlify.app/position/${category.id}`);
 
     }
 

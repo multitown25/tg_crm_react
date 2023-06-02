@@ -121,7 +121,7 @@ const PositionList = () => {
         <>
             <Cart addedItems={addedItems} onCheckout={onCheckout}/>
             <div className={'list'}>
-                {position[category.id].map(item => (
+                {position.map(item => (
                     <PositionItem
                         position={item}
                         onAdd={onAdd}

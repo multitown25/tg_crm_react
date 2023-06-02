@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 import Button from "../Button/Button";
 import './CategoryItem.css';
 import {useTelegram} from "../../hooks/useTelegram";
+import {getCategories} from "../../db/db";
 
 const CategoryItem = ({category, className, onAdd}) => {
     const {tg, queryId} = useTelegram();
@@ -10,14 +11,12 @@ const CategoryItem = ({category, className, onAdd}) => {
         onAdd(category);
     }
 
-    const imageClick = () => {
+    const imageClick = async () => {
         console.log(category)
         const data = {
             categoryId: category.id,
             queryId
         }
-
-        window.location.assign(`https://restaurant-react-system.netlify.app/position/${category.id}`);
 
         fetch('http://localhost:5000/api/order/test', {
             method: 'POST',
@@ -26,6 +25,12 @@ const CategoryItem = ({category, className, onAdd}) => {
             },
             body: JSON.stringify(data)
         });
+
+        const categoriesFromDB = await getCategories()
+        console.log(categoriesFromDB);
+
+        window.location.assign(`https://restaurant-react-system.netlify.app/position/${category.id}`);
+
     }
 
     return (

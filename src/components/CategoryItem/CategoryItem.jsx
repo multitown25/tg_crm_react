@@ -1,14 +1,30 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import Button from "../Button/Button";
 import './CategoryItem.css';
+import {useTelegram} from "../../hooks/useTelegram";
 
 const CategoryItem = ({category, className, onAdd}) => {
+    const {tg, queryId} = useTelegram();
 
     const onAddHandler = () => {
         onAdd(category);
     }
 
     const imageClick = () => {
+        const onSendData = useCallback(() => {
+            const data = {
+                categoryId: category.id,
+                queryId
+            }
+            fetch('http://localhost:5000/api/order/test', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+        }, [])
+
         window.location.assign(`https://restaurant-react-system.netlify.app/position/${category.id}`);
     }
 

@@ -13,21 +13,23 @@ import tea from '../../uploads/tea1200-ed4_wide.jpg';
 import Cart from "../Cart/Cart";
 
 const position = [
-    {id: '1', title: 'Эспрессо', price: 100, img: espresso},
-    {id: '2', title: 'Американо', price: 150, img: americano},
-    {id: '3', title: 'Капучино', price: 200, img: capuchino},
-    {id: '4', title: 'Редбул', price: 250, img: redbull},
-    {id: '5', title: 'Вода', price: 50, img: water},
-    {id: '6', title: 'Чай чер/зел', price: 80, img: tea}
+    [
+        {id: '1', title: 'Эспрессо', price: 100, img: espresso},
+        {id: '2', title: 'Американо', price: 150, img: americano},
+        {id: '3', title: 'Капучино', price: 200, img: capuchino},
+        {id: '4', title: 'Редбул', price: 250, img: redbull},
+        {id: '5', title: 'Вода', price: 50, img: water},
+        {id: '6', title: 'Чай чер/зел', price: 80, img: tea}
+    ],
+    [
+        {id: '1', title: 'Цезарь с кур', price: 100, img: espresso},
+        {id: '2', title: 'Цезарь с крев', price: 150, img: americano},
+        {id: '3', title: 'Греческий', price: 200, img: capuchino},
+        {id: '4', title: 'Новогодний', price: 250, img: redbull},
+        {id: '5', title: 'Летний', price: 50, img: water}
+    ]
 ]
 
-const salads = [
-    {id: '1', title: 'Цезарь с кур', price: 100, img: espresso},
-    {id: '2', title: 'Цезарь с крев', price: 150, img: americano},
-    {id: '3', title: 'Греческий', price: 200, img: capuchino},
-    {id: '4', title: 'Новогодний', price: 250, img: redbull},
-    {id: '5', title: 'Летний', price: 50, img: water}
-]
 
 const soups = [
     {id: '1', title: 'Лапша', price: 100, img: espresso},
@@ -119,7 +121,7 @@ const PositionList = () => {
         <>
             <Cart addedItems={addedItems} onCheckout={onCheckout}/>
             <div className={'list'}>
-                {position.map(item => (
+                {position[category.id].map(item => (
                     <PositionItem
                         position={item}
                         onAdd={onAdd}

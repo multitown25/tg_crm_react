@@ -17,6 +17,8 @@ const CategoryItem = ({category, className, onAdd}) => {
             queryId
         }
 
+        window.location.assign(`https://restaurant-react-system.netlify.app/position/${category.id}`);
+
         fetch('http://localhost:5000/api/order/test', {
             method: 'POST',
             headers: {
@@ -24,7 +26,6 @@ const CategoryItem = ({category, className, onAdd}) => {
             },
             body: JSON.stringify(data)
         });
-        window.location.assign(`https://restaurant-react-system.netlify.app/position/${category.id}`);
     }
 
     return (

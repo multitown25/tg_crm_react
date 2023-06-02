@@ -11,7 +11,7 @@ const CategoryItem = ({category, className, onAdd}) => {
     }
 
     const imageClick = () => {
-
+        console.log(category)
         const data = {
             categoryId: category.id,
             queryId

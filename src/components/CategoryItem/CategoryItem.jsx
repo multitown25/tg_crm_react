@@ -28,7 +28,7 @@ const CategoryItem = ({category, className, onAdd}) => {
     return (
         <div className={'category ' + className}>
             <div className={'image__container'}>
-                <img src={category.img} onClick={imageClick}/>
+                <img src={category.imgSrc} onClick={imageClick}/>
             </div>
             <h4 className="card__title__category">{category.name}</h4>
             {/*<div className={'title'}>{category.title}</div>*/}

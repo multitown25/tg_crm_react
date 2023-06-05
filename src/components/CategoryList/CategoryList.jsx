@@ -10,7 +10,7 @@ import soups from '../../uploads/27092022-080410-211-soup.png';
 import pasta from '../../uploads/27092022-080640-894-pasta.jpg';
 import breakfast from '../../uploads/27092022-080913-546-breakfest.jpg';
 
-import categories from '../../db/db';
+import {getCategories as categories} from "../../db/db";
 
 // const category = [
 //     {id: '1', title: 'Напитки', price: 100, img: drinks},

@@ -5,7 +5,7 @@ export async function getCategories() {
     // console.log(token);
     axios({
         method: "get",
-        url: "http://5.101.51.105/categories",
+        url: "http://localhost:8000/getCategories",
     }).then(function (response) {
         console.log(response.data);
     });

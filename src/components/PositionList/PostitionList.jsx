@@ -97,27 +97,27 @@ const PositionList = () => {
 
     const totalPrice = addedItems.reduce((a, c) => a + c.price * c.quantity, 0);
 
-    // const onSendData = useCallback(() => {
-    //     const data = {
-    //         products: addedItems,
-    //         totalPrice: getTotalPrice(addedItems),
-    //         queryId,
-    //     }
-    //     fetch('http://85.119.146.179:8000/web-data', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    // }, [addedItems])
-    //
-    // useEffect(() => {
-    //     tg.onEvent('mainButtonClicked', onSendData)
-    //     return () => {
-    //         tg.offEvent('mainButtonClicked', onSendData)
-    //     }
-    // }, [onSendData])
+    const onSendData = useCallback(() => {
+        const data = {
+            queryId,
+            addedItems,
+            totalPrice
+        }
+        fetch('http://5.101.51.105:8000/create-order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+    }, [addedItems])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
 
     const onAdd = (food) => {
         const exist = addedItems.find((x) => x.id === food.id);
@@ -163,6 +163,8 @@ const PositionList = () => {
         //     url: "http://localhost:8000",
         // });
     };
+
+
 
     return (
         <>

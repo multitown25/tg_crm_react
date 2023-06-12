@@ -8,5 +8,6 @@ export async function getCategories() {
         url: "http://localhost:8000/getCategories",
     });
 
+    console.log('hello');
     return await categories.data;
 }

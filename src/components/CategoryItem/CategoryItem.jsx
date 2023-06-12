@@ -18,10 +18,10 @@ const CategoryItem = ({category, className, onAdd}) => {
             queryId
         }
 
-        const categoriesFromDB = await getCategories()
-        console.log(categoriesFromDB);
+        //const categoriesFromDB = await getCategories()
+        //console.log(categoriesFromDB);
 
-        //window.location.assign(`https://restaurant-react-system.netlify.app/position/${category.id}`);
+        window.location.assign(`https://restaurant-react-system.netlify.app/position/${category.id}`);
 
     }
 
@@ -30,7 +30,7 @@ const CategoryItem = ({category, className, onAdd}) => {
             <div className={'image__container'}>
                 <img src={`./${category.img}`} onClick={imageClick}/>
             </div>
-            <h4 className="card__title__category">{category.name}</h4>
+            <h4 className="card__title__category">{category.title}</h4>
             {/*<div className={'title'}>{category.title}</div>*/}
             {/*<div className={'description'}>{category.description}</div>*/}
             {/*<div className={'price'}>*/}

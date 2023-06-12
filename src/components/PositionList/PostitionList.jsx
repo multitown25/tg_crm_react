@@ -98,6 +98,7 @@ const PositionList = () => {
     const totalPrice = addedItems.reduce((a, c) => a + c.price * c.quantity, 0);
 
     const onSendData = useCallback(async () => {
+        console.log(queryId);
         const data = {
             queryId,
             addedItems,

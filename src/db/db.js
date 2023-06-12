@@ -9,6 +9,6 @@ export async function getCategories() {
     });
 
     console.log(categories);
-    console.log(categories.data);
+    console.log(categories.data)
     return await categories.data;
 }

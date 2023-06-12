@@ -17,6 +17,7 @@ import novogodni from '../../uploads/novogodni.jpg';
 import letni from '../../uploads/letnij-salat.jpg';
 
 import Cart from "../Cart/Cart";
+import axios from "axios";
 
 const position = [
     [
@@ -86,12 +87,15 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
+
 const PositionList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
     const currentLocation = window.location.href;
     const currentId = currentLocation[currentLocation.length - 1];
     console.log(currentId);
+
+    const totalPrice = addedItems.reduce((a, c) => a + c.price * c.quantity, 0);
 
     // const onSendData = useCallback(() => {
     //     const data = {
@@ -141,9 +145,23 @@ const PositionList = () => {
         }
     };
 
-    const onCheckout = () => {
-        // tg.MainButton.text = "ппп";
-        // tg.MainButton.show();
+    const onCheckout = async () => {
+        const data = {
+            queryId,
+            addedItems,
+            totalPrice
+        }
+        // tg.sendData(JSON.stringify(data));
+
+        await axios.post('http://localhost:8000', data, {
+            headers: {
+                'Content-Type': 'application/json'},
+        });
+        // await axios({
+        //     method: "POST",
+        //     headers: {'content-type': 'application'},
+        //     url: "http://localhost:8000",
+        // });
     };
 
     return (

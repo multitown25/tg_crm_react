@@ -27,32 +27,52 @@ const position = [
         {id: '3', title: 'Греческий', price: 200, img: capuchino},
         {id: '4', title: 'Новогодний', price: 250, img: redbull},
         {id: '5', title: 'Летний', price: 50, img: water}
+    ],
+    [
+        {id: '1', title: 'Лапша', price: 100, img: espresso},
+        {id: '2', title: 'Борщ', price: 150, img: americano},
+        {id: '3', title: 'Сырный крем-суп', price: 200, img: capuchino},
+        {id: '4', title: 'Грибной крем-суп', price: 250, img: redbull}
+    ],
+    [
+        {id: '1', title: 'Спагетти с гов', price: 100, img: espresso},
+        {id: '2', title: 'Спагетти с кур', price: 150, img: americano},
+        {id: '3', title: 'Карбонара', price: 200, img: capuchino},
+        {id: '4', title: 'Пенне с бек и кур', price: 250, img: redbull}
+    ],
+    [
+        {id: '1', title: 'Омлет по-мексикански', price: 100, img: espresso},
+        {id: '2', title: 'Гурман', price: 150, img: americano},
+        {id: '3', title: 'Омлет торнадо', price: 200, img: capuchino},
+        {id: '4', title: 'Английский завтрак', price: 250, img: redbull},
+        {id: '5', title: 'Ванильные сырники', price: 50, img: water},
+        {id: '6', title: 'Фитнес', price: 80, img: tea}
     ]
 ]
 
 
-const soups = [
-    {id: '1', title: 'Лапша', price: 100, img: espresso},
-    {id: '2', title: 'Борщ', price: 150, img: americano},
-    {id: '3', title: 'Сырный крем-суп', price: 200, img: capuchino},
-    {id: '4', title: 'Грибной крем-суп', price: 250, img: redbull}
-]
-
-const pasta = [
-    {id: '1', title: 'Спагетти с гов', price: 100, img: espresso},
-    {id: '2', title: 'Спагетти с кур', price: 150, img: americano},
-    {id: '3', title: 'Карбонара', price: 200, img: capuchino},
-    {id: '4', title: 'Пенне с бек и кур', price: 250, img: redbull}
-]
-
-const breakfast = [
-    {id: '1', title: 'Омлет по-мексикански', price: 100, img: espresso},
-    {id: '2', title: 'Гурман', price: 150, img: americano},
-    {id: '3', title: 'Омлет торнадо', price: 200, img: capuchino},
-    {id: '4', title: 'Английский завтрак', price: 250, img: redbull},
-    {id: '5', title: 'Ванильные сырники', price: 50, img: water},
-    {id: '6', title: 'Фитнес', price: 80, img: tea}
-]
+// const soups = [
+//     {id: '1', title: 'Лапша', price: 100, img: espresso},
+//     {id: '2', title: 'Борщ', price: 150, img: americano},
+//     {id: '3', title: 'Сырный крем-суп', price: 200, img: capuchino},
+//     {id: '4', title: 'Грибной крем-суп', price: 250, img: redbull}
+// ]
+//
+// const pasta = [
+//     {id: '1', title: 'Спагетти с гов', price: 100, img: espresso},
+//     {id: '2', title: 'Спагетти с кур', price: 150, img: americano},
+//     {id: '3', title: 'Карбонара', price: 200, img: capuchino},
+//     {id: '4', title: 'Пенне с бек и кур', price: 250, img: redbull}
+// ]
+//
+// const breakfast = [
+//     {id: '1', title: 'Омлет по-мексикански', price: 100, img: espresso},
+//     {id: '2', title: 'Гурман', price: 150, img: americano},
+//     {id: '3', title: 'Омлет торнадо', price: 200, img: capuchino},
+//     {id: '4', title: 'Английский завтрак', price: 250, img: redbull},
+//     {id: '5', title: 'Ванильные сырники', price: 50, img: water},
+//     {id: '6', title: 'Фитнес', price: 80, img: tea}
+// ]
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
@@ -63,6 +83,7 @@ const getTotalPrice = (items = []) => {
 const PositionList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
+    const currentId = window.location.id;
 
     // const onSendData = useCallback(() => {
     //     const data = {
@@ -121,7 +142,7 @@ const PositionList = () => {
         <>
             <Cart addedItems={addedItems} onCheckout={onCheckout}/>
             <div className={'list'}>
-                {soups.map(item => (
+                {position[currentId].map(item => (
                     <PositionItem
                         position={item}
                         onAdd={onAdd}

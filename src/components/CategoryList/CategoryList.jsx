@@ -76,9 +76,6 @@ const CategoryList = () => {
     //     }
     // }
 
-    const imageClick = () => {
-        window.location.assign('https://restaurant-react-system.netlify.app/position');
-    }
 
     return (
         <div className={'list'}>

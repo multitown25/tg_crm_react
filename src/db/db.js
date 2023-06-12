@@ -8,6 +8,7 @@ export async function getCategories() {
         url: "5.101.51.105/categories",
     });
 
-    console.log('hello');
+    console.log(categories);
+    console.log(categories.data);
     return await categories.data;
 }

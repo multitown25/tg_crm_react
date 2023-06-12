@@ -10,6 +10,12 @@ import capuchino from '../../uploads/capuchino49e2626b85f71806c91e73aec3671e41.j
 import redbull from '../../uploads/redbul6337590357.jpg';
 import water from '../../uploads/waterdc284b71c7a6783c5617755262f24dfe.jpg';
 import tea from '../../uploads/tea1200-ed4_wide.jpg';
+import cesarCur from '../../uploads/cesar_cur.jpg';
+import cesarKrev from '../../uploads/cesar_krev.jpg';
+import grech from '../../uploads/grecheskiy-salat.jpg';
+import novogodni from '../../uploads/novogodni.jpg';
+import letni from '../../uploads/letnij-salat.jpg';
+
 import Cart from "../Cart/Cart";
 
 const position = [
@@ -22,11 +28,11 @@ const position = [
         {id: '6', title: 'Чай чер/зел', price: 80, img: tea}
     ],
     [
-        {id: '1', title: 'Цезарь с кур', price: 100, img: espresso},
-        {id: '2', title: 'Цезарь с крев', price: 150, img: americano},
-        {id: '3', title: 'Греческий', price: 200, img: capuchino},
-        {id: '4', title: 'Новогодний', price: 250, img: redbull},
-        {id: '5', title: 'Летний', price: 50, img: water}
+        {id: '1', title: 'Цезарь с кур', price: 100, img: cesarCur},
+        {id: '2', title: 'Цезарь с крев', price: 150, img: cesarKrev},
+        {id: '3', title: 'Греческий', price: 200, img: grech},
+        {id: '4', title: 'Новогодний', price: 250, img: novogodni},
+        {id: '5', title: 'Летний', price: 50, img: letni}
     ],
     [
         {id: '1', title: 'Лапша', price: 100, img: espresso},
@@ -144,7 +150,7 @@ const PositionList = () => {
         <>
             <Cart addedItems={addedItems} onCheckout={onCheckout}/>
             <div className={'list'}>
-                {position[currentId].map(item => (
+                {position[currentId - 1].map(item => (
                     <PositionItem
                         position={item}
                         onAdd={onAdd}

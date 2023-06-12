@@ -5,7 +5,7 @@ export async function getCategories() {
     // console.log(token);
     const categories = await axios({
         method: "get",
-        url: "5.101.51.105/categories",
+        url: "5.101.51.105/api/category",
     });
 
     console.log(categories);

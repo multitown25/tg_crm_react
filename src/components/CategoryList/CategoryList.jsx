@@ -10,15 +10,15 @@ import soups from '../../uploads/27092022-080410-211-soup.png';
 import pasta from '../../uploads/27092022-080640-894-pasta.jpg';
 import breakfast from '../../uploads/27092022-080913-546-breakfest.jpg';
 
-import {getCategories} from "../../db/db";
+//import {getCategories} from "../../db/db";
 
-// const category = [
-//     {id: '1', title: 'Напитки', price: 100, img: drinks},
-//     {id: '2', title: 'Салаты', price: 150, img: salads},
-//     {id: '3', title: 'Супы', price: 200, img: soups},
-//     {id: '4', title: 'Паста', price: 250, img: pasta},
-//     {id: '5', title: 'Завтраки', price: 50, img: breakfast}
-// ]
+const category = [
+    {id: '1', title: 'Напитки', price: 100, img: drinks},
+    {id: '2', title: 'Салаты', price: 150, img: salads},
+    {id: '3', title: 'Супы', price: 200, img: soups},
+    {id: '4', title: 'Паста', price: 250, img: pasta},
+    {id: '5', title: 'Завтраки', price: 50, img: breakfast}
+]
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
@@ -26,7 +26,7 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
-const categories = await getCategories();
+//const categories = await getCategories();
 
 const CategoryList = () => {
     // const [addedItems, setAddedItems] = useState([]);
@@ -82,7 +82,7 @@ const CategoryList = () => {
 
     return (
         <div className={'list'}>
-            {categories.map(item => (
+            {category.map(item => (
                 <CategoryItem
                     category={item}
                     // onAdd={onAdd}

@@ -83,8 +83,8 @@ const getTotalPrice = (items = []) => {
 const PositionList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
-    const currentId = window.location.id;
-    console.log(currentId);
+    const searchParams = new URLSearchParams(window.location.search);
+    const currentId = searchParams.get('id');
 
     // const onSendData = useCallback(() => {
     //     const data = {

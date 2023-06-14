@@ -177,7 +177,7 @@ const PositionList = () => {
 
 
     return (
-        <>
+        <div>
             <Cart addedItems={addedItems} onCheckout={onCheckout}/>
             <div className={'list'}>
                 {position[currentId - 1].map(item => (
@@ -189,7 +189,7 @@ const PositionList = () => {
                     />
                 ))}
             </div>
-        </>
+        </div>
     );
 };
 

@@ -154,20 +154,20 @@ const PositionList = () => {
             addedItems,
             totalPrice
         }
-        //tg.sendData(JSON.stringify(data));
+        tg.sendData(JSON.stringify(data));
 
         // await axios.post('http://5.101.51.105:8000/create-order', data, {
         //     headers: {
         //         'Content-Type': 'application/json'},
         // });
         //console.log('oncheckout');
-        fetch('http://5.101.51.105:8000/create-order/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        });
+        // fetch('http://5.101.51.105:8000/create-order/', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(data)
+        // });
     };
 
 

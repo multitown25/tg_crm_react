@@ -91,20 +91,21 @@ const getTotalPrice = (items = []) => {
 const PositionList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
+
     const currentLocation = window.location.href;
     const currentId = currentLocation[currentLocation.length - 1];
     console.log(currentId);
 
     const totalPrice = addedItems.reduce((a, c) => a + c.price * c.quantity, 0);
 
-    const onSendData = useCallback(async () => {
+    const onSendData = useCallback(() => {
         console.log(queryId);
         const data = {
             queryId,
             addedItems,
             totalPrice
         }
-        await axios.post('http://5.101.51.105:8000/create-order', data, {
+        axios.post('http://5.101.51.105:8000/create-order', data, {
             headers: {
                 'Content-Type': 'application/json'
             },

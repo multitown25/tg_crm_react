@@ -123,7 +123,6 @@ const PositionList = () => {
     }, [onSendData])
 
     const onAdd = (food) => {
-        tg.MainButton.show();
         const exist = addedItems.find((x) => x.id === food.id);
         if (exist) {
             setAddedItems(

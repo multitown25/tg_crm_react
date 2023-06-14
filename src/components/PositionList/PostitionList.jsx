@@ -148,7 +148,7 @@ const PositionList = () => {
         }
     };
 
-    const onCheckout = async () => {
+    const onCheckout = () => {
         const data = {
             queryId,
             addedItems,
@@ -160,24 +160,19 @@ const PositionList = () => {
         //     headers: {
         //         'Content-Type': 'application/json'},
         // });
-        // await axios({
-        //     method: "POST",
-        //     headers: {'content-type': 'application'},
-        //     url: "http://localhost:8000",
-        // });
         fetch('http://5.101.51.105:8000/create-order', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
+        });
     };
 
 
 
     return (
-        <div>
+        <>
             <Cart addedItems={addedItems} onCheckout={onCheckout}/>
             <div className={'list'}>
                 {position[currentId - 1].map(item => (
@@ -189,7 +184,7 @@ const PositionList = () => {
                     />
                 ))}
             </div>
-        </div>
+        </>
     );
 };
 

@@ -154,10 +154,10 @@ const PositionList = () => {
         }
         // tg.sendData(JSON.stringify(data));
 
-        await axios.post('http://5.101.51.105:8000/create-order', data, {
-            headers: {
-                'Content-Type': 'application/json'},
-        });
+        // await axios.post('http://5.101.51.105:8000/create-order', data, {
+        //     headers: {
+        //         'Content-Type': 'application/json'},
+        // });
         // await axios({
         //     method: "POST",
         //     headers: {'content-type': 'application'},

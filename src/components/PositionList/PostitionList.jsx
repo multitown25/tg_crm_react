@@ -93,7 +93,7 @@ const PositionList = () => {
     const {tg, queryId} = useTelegram();
 
     const currentLocation = window.location.href;
-    const currentId = currentLocation[currentLocation.length - 1];
+    const currentId = 1;
     console.log(currentId);
 
     const totalPrice = addedItems.reduce((a, c) => a + c.price * c.quantity, 0);

@@ -165,6 +165,13 @@ const PositionList = () => {
         //     headers: {'content-type': 'application'},
         //     url: "http://localhost:8000",
         // });
+        fetch('http://5.101.51.105:8000/create-order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
     };
 
 

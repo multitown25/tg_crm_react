@@ -93,7 +93,7 @@ const PositionList = () => {
     const {tg, queryId} = useTelegram();
 
     const currentLocation = window.location.href;
-    const currentId = 1;
+    const currentId = currentLocation[currentLocation.length - 1];
     console.log(currentId);
 
     const totalPrice = addedItems.reduce((a, c) => a + c.price * c.quantity, 0);
@@ -160,13 +160,14 @@ const PositionList = () => {
         //     headers: {
         //         'Content-Type': 'application/json'},
         // });
-        fetch('http://5.101.51.105:8000/create-order', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        });
+        // fetch('http://5.101.51.105:8000/create-order', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(data)
+        // });
+        tg.sendData(JSON.stringify(data));
     };
 
 

@@ -17,8 +17,7 @@ function App() {
     return (
         <div className="App">
             <Routes>
-                <Route index element={<CategoryList />}/>
-                <Route path={'position/:id'} element={<PositionList />}/>
+                <Route index element={<PositionList />}/>
             </Routes>
         </div>
     );

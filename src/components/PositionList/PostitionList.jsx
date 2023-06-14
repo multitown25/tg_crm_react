@@ -160,14 +160,14 @@ const PositionList = () => {
         //     headers: {
         //         'Content-Type': 'application/json'},
         // });
-        // fetch('http://5.101.51.105:8000/create-order', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(data)
-        // });
-        tg.sendData(JSON.stringify(data));
+        console.log('oncheckout');
+        fetch('http://5.101.51.105:8000/create-order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
     };
 
 

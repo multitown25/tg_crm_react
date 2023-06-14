@@ -105,13 +105,14 @@ const PositionList = () => {
             addedItems,
             totalPrice
         }
-        fetch('http://5.101.51.105:8000/create-order', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
+        // fetch('http://5.101.51.105:8000/create-order', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(data)
+        // })
+        tg.sendData(JSON.stringify(data));
     }, [addedItems])
 
     useEffect(() => {
@@ -174,7 +175,7 @@ const PositionList = () => {
 
     return (
         <>
-            <Cart addedItems={addedItems} onCheckout={onCheckout}/>
+            <Cart addedItems={addedItems} onCheckout={onSendData}/>
             <div className={'list'}>
                 {position[currentId - 1].map(item => (
                     <PositionItem

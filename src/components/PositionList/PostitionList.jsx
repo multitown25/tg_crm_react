@@ -99,17 +99,19 @@ const PositionList = () => {
     const totalPrice = addedItems.reduce((a, c) => a + c.price * c.quantity, 0);
 
     const onSendData = useCallback(() => {
-        console.log(queryId);
+        //console.log(queryId);
         const data = {
             queryId,
             addedItems,
             totalPrice
         }
-        axios.post('http://5.101.51.105:8000/create-order', data, {
+        fetch('http://5.101.51.105:8000/create-order', {
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-        });
+            body: JSON.stringify(data)
+        })
     }, [addedItems])
 
     useEffect(() => {
